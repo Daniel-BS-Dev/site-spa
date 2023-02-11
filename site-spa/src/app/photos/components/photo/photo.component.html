@@ -1,0 +1,7 @@
+<ul class="list-unstyled">
+  <li class="row" *ngFor="let cols of rows">
+    <div *ngFor="let photo of photos" class="col-4">
+      <img class="img-thumbnail" [src]="photo.url" [alt]="photo.description">
+    </div>
+  </li>
+</ul>

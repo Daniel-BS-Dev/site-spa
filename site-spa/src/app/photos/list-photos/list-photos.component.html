@@ -1,1 +1,3 @@
-<p>list-photos works hhhhh!</p>
+<main class="container-full p-2">
+ <app-photo [photos]="(photos$ | async) || []"></app-photo>
+</main>
