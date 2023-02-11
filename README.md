@@ -2,7 +2,7 @@
 
 # instalando o bootstrap
 - npm install bootstrap
-- package.jason
+- angular.json
 ````
 "styles": [
     "src/styles.css",
