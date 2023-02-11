@@ -1,6 +1,6 @@
 # site-spa
 
-# instalando o bootstrap
+## instalando o bootstrap
 - npm install bootstrap
 - angular.json
 ````
