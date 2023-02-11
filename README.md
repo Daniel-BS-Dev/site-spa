@@ -6,7 +6,7 @@
 ````
 "styles": [
     "src/styles.css",
-    "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    "node_modules/bootstrap/dist/css/bootstrap.min.css"
 ],
 "scripts": []
 ````
