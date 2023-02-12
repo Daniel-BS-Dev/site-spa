@@ -1,8 +1,8 @@
 import { Photo } from './../../models/photos';
 import { Observable, takeUntil, Subject } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PhotosService } from 'src/app/sevice/photos.service';
 import { ActivatedRoute } from '@angular/router';
+
 import { Searching } from 'src/app/shared/searching/searching.component';
 
 @Component({
@@ -18,10 +18,10 @@ export class ListPhotosComponent implements OnInit, OnDestroy {
 
   unsubscribe$ = new Subject();
 
-  constructor(private servicePhotos: PhotosService, private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getListPhotosByUser();
+    this.listPhotos = this.activatedRoute.snapshot.data['photos'];
   }
 
   findPhotosByFilter = (filterValue: Searching): void => {
@@ -35,17 +35,4 @@ export class ListPhotosComponent implements OnInit, OnDestroy {
     this.unsubscribe$.next(true);
     this.unsubscribe$.complete();
   }
-
-  private getListPhotosByUser = (): void => {
-    const userName = this.activatedRoute.snapshot.params['userName'];
-
-    this.servicePhotos.findListPhotos(userName).pipe(
-      takeUntil(this.unsubscribe$)
-    ).subscribe((photos: Photo[]) => {
-      this.listPhotos = photos
-      this.loading = false
-    }
-    );
-  }
-
 }
