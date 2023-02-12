@@ -9,9 +9,9 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 export class PhotoComponent implements OnChanges {
 
   @Input() photos: Photo[] = [];
+  @Input() emptyList!: boolean;
 
   rows: any[] = [];
-
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['photos'])
@@ -22,7 +22,7 @@ export class PhotoComponent implements OnChanges {
     const newRows: any[] = [];
 
     for (let i = 0; i < this.photos.length; i++) {
-      newRows.push(this.photos.slice(i, i + 3))
+      newRows.push(this.photos.slice(i, i + 3));
     }
 
     return newRows;

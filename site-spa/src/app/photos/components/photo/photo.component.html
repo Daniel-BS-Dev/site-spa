@@ -1,7 +1,16 @@
-<ul class="list-unstyled">
+<ul class="list-unstyled" *ngIf="photos.length; else emptyArray">
   <li class="row" *ngFor="let cols of rows">
-    <div *ngFor="let photo of photos" class="col-4">
+    <section *ngFor="let photo of photos" class="col-4">
       <img class="img-thumbnail" [src]="photo.url" [alt]="photo.description">
-    </div>
+    </section>
   </li>
 </ul>
+
+<ng-template #emptyArray>
+ <section class="text-center text-muted" *ngIf="!emptyList">
+   Não há fotos.
+ </section>
+</ng-template>
+
+
+

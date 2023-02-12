@@ -4,6 +4,7 @@ import { ListPhotosComponent } from './list-photos/list-photos.component';
 import { PhotosRoutingModule } from './photos-routing.module';
 import { PhotosService } from '../sevice/photos.service';
 import { PhotoComponent } from './components/photo/photo.component';
+import { SharedModule } from '../shared/shared/shared.module';
 
 const declarations = [
   ListPhotosComponent
@@ -16,7 +17,8 @@ const declarations = [
   ],
   imports: [
     CommonModule,
-    PhotosRoutingModule
+    PhotosRoutingModule,
+    SharedModule
   ],
   providers: [PhotosService]
 })

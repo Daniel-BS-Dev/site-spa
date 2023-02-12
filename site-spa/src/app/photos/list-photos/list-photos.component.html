@@ -1,3 +1,4 @@
 <main class="container-full p-2">
- <app-photo [photos]="(photos$ | async) || []"></app-photo>
+  <app-searching (filterSearching)="findPhotosByFilter($event)"></app-searching>
+  <app-photo [photos]="photos || []" [emptyList]="emptyList"></app-photo>
 </main>
