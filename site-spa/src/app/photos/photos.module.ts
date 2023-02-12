@@ -7,16 +7,18 @@ import { PhotosService } from '../sevice/photos.service';
 import { PhotoComponent } from './components/photo/photo.component';
 import { SharedModule } from '../shared/shared.module';
 import { FilterByDescriptionPipe } from './pipe/filter-by-description.pipe';
+import { LoadButtonComponent } from './components/load-button/load-button.component';
 
 const declarations = [
   ListPhotosComponent,
-  PhotoComponent
+  PhotoComponent,
+  LoadButtonComponent
 ];
 
 @NgModule({
   declarations: [
     ...declarations,
-    FilterByDescriptionPipe
+    FilterByDescriptionPipe,
   ],
   imports: [
     CommonModule,

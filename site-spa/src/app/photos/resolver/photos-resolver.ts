@@ -13,6 +13,6 @@ export class PhotosResolver implements Resolve<Observable<Photo[]>>{
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Photo[]> | Observable<Observable<Photo[]>> | Promise<Observable<Photo[]>> {
     const userName = route.params['userName'];
-    return this.service.findListPhotos(userName);
+    return this.service.findPaginatedPhotos(userName, 1);
   }
 }

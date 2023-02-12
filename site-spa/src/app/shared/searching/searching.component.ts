@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map, Subject, takeUntil } from 'rxjs';
+import { debounceTime, map, Subject, takeUntil } from 'rxjs';
 
 export interface Searching {
   filter: string,
@@ -34,8 +34,7 @@ export class SearchingComponent implements OnInit, OnDestroy {
     this.loading = true;
 
     this.filter.valueChanges.pipe(
-      map(value => value?.toLowerCase()),
-      map(value => value?.trim()),
+      debounceTime(300),
       takeUntil(this.unsubscribe$)
     ).subscribe((filter) =>
       this.filterSearching.emit({

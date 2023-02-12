@@ -1,4 +1,6 @@
 <main class="container-full p-2">
   <app-searching (filterSearching)="findPhotosByFilter($event)"></app-searching>
   <app-photo [photos]="(listPhotos | filterByDescription: filterPhotosValue) || []" [loading]="loading"></app-photo>
+
+  <app-load-button [hasMore]="hasMore" (click)="loadMore()"></app-load-button>
 </main>
