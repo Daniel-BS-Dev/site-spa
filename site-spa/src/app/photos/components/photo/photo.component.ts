@@ -9,7 +9,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 export class PhotoComponent implements OnChanges {
 
   @Input() photos: Photo[] = [];
-  @Input() emptyList!: boolean;
+  @Input() loading: boolean = true;
 
   rows: any[] = [];
 

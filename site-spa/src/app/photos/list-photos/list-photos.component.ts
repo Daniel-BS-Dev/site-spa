@@ -3,6 +3,7 @@ import { Observable, takeUntil, Subject } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PhotosService } from 'src/app/sevice/photos.service';
 import { ActivatedRoute } from '@angular/router';
+import { Searching } from 'src/app/shared/searching/searching.component';
 
 @Component({
   selector: 'app-list-photos',
@@ -13,7 +14,7 @@ export class ListPhotosComponent implements OnInit, OnDestroy {
 
   listPhotos: Photo[] = [];
   listPhotosFilter: Photo[] = [];
-  emptyList: boolean = true;
+  loading: boolean = true;
 
   unsubscribe$ = new Subject();
 
@@ -27,9 +28,14 @@ export class ListPhotosComponent implements OnInit, OnDestroy {
     this.getListPhotosByUser();
   }
 
-  findPhotosByFilter = (filterValue: string): Photo[] =>
-    this.listPhotosFilter = this.listPhotos.filter((photo: Photo) =>
-      photo.description.toLowerCase().includes(filterValue));
+  findPhotosByFilter = (filterValue: Searching): Photo[] => {
+    const { filter, loading } = filterValue;
+
+    this.loading = loading;
+
+    return this.listPhotosFilter = this.listPhotos.filter((photo: Photo) =>
+      photo.description.toLowerCase().includes(filter));
+  }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next(true);
@@ -43,7 +49,7 @@ export class ListPhotosComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe((photos: Photo[]) => {
       this.listPhotos = photos
-      this.emptyList = false
+      this.loading = false
     }
     );
   }

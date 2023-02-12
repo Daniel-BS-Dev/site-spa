@@ -1,6 +1,11 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map, Subject, takeUntil, tap } from 'rxjs';
+import { map, Subject, takeUntil } from 'rxjs';
+
+export interface Searching {
+  filter: string,
+  loading: boolean
+}
 
 @Component({
   selector: 'app-searching',
@@ -9,7 +14,8 @@ import { map, Subject, takeUntil, tap } from 'rxjs';
 })
 export class SearchingComponent implements OnInit, OnDestroy {
 
-  @Output() filterSearching = new EventEmitter<string>();
+  @Output() filterSearching = new EventEmitter<Searching>();
+  loading: boolean = true;
 
   filter = new FormControl('');
 
@@ -24,12 +30,18 @@ export class SearchingComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  private getChangesFieldSearch = () =>
+  private getChangesFieldSearch = () => {
+    this.loading = true;
+
     this.filter.valueChanges.pipe(
       map(value => value?.toLowerCase()),
       map(value => value?.trim()),
       takeUntil(this.unsubscribe$)
     ).subscribe((filter) =>
-      this.filterSearching.emit(filter ? filter : '')
+      this.filterSearching.emit({
+        filter: filter ? filter : '',
+        loading: false
+      })
     );
+  }
 }
