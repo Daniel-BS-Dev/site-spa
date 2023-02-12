@@ -1,9 +1,10 @@
 <header class="fixed-top container">
   <nav class="navbar navbar-light bg-white">
     <a class="navbar-brand">SPAn</a>
-    <div>
+    <div *ngIf="(user$ | async) as user">
       <i class="fa fa-user-circle me-2"></i>
-      <a>Aqui deve entrar o username</a>
+      <a>{{ user?.name }}</a>
+      <a (click)="logout()">(sair)</a>
     </div>
   </nav>
 </header>
