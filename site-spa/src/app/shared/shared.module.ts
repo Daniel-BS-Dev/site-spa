@@ -6,17 +6,19 @@ import { SearchingComponent } from './searching/searching.component';
 import { LoadingComponent } from './loading/loading.component';
 import { CardComponent } from './card/card.component';
 import { DarkenOnHoverDirective } from './directives/darken-on-hover.directive';
+import { ErrorMessageComponent } from './error-message/error-message.component';
 
 const declarations = [
   SearchingComponent,
   LoadingComponent,
   CardComponent,
-  DarkenOnHoverDirective
+  DarkenOnHoverDirective,
+  ErrorMessageComponent
 ];
 
 @NgModule({
   declarations: [
-    ...declarations
+    ...declarations,
    ],
   exports: [
     ...declarations

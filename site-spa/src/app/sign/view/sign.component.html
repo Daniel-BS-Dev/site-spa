@@ -1,1 +1,25 @@
-<p>sign works!</p>
+<section class="container col-10 col-md-6 pt-5">
+  <h4 class="text-center pt-5">Login</h4>
+
+  <form #f [formGroup]="signForm" class="form mt-4">
+    <div class="form-group">
+      <input class="form-control" placeholder="Digite o nome" formControlName="email" autofocus>
+      <app-error-message *ngIf="email.errors?.['required']" message="Campo email é obrigatório!"></app-error-message>
+    </div>
+
+    <div class="form-group py-4">
+      <input type="password" class="form-control" formControlName="password" placeholder="Digite a senha">
+      <app-error-message *ngIf="password.errors?.['required']" message="Campo senha é obrigatório!"></app-error-message>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary btn-block col-5">
+        Entrar
+      </button>
+    </div>
+  </form>
+
+  <div class="text-center mt-1">
+    <p>Não é usuário?<a>Registre-se agora</a></p>
+  </div>
+</section>
