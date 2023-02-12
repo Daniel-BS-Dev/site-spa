@@ -1,16 +1,18 @@
 <ul class="list-unstyled" *ngIf="photos.length; else emptyArray">
-  <li class="row" *ngFor="let cols of rows">
+  <li class="row no-gutters" *ngFor="let cols of rows">
     <section *ngFor="let photo of photos" class="col-4">
       <img class="img-thumbnail" [src]="photo.url" [alt]="photo.description">
+
+      <div class="text-center">
+        <i class="fa fa-heart-o fa-1x me-2">{{ photo.likes }}</i>
+        <i class="fa fa-comment-o fa-1x">{{ photo.comments }}</i>
+      </div>
     </section>
   </li>
 </ul>
 
 <ng-template #emptyArray>
- <section class="text-center text-muted" *ngIf="!loading">
-   Não há fotos.
- </section>
+  <section class="text-center text-muted" *ngIf="!loading">
+    Não há fotos.
+  </section>
 </ng-template>
-
-
-
