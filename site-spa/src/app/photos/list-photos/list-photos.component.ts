@@ -13,28 +13,22 @@ import { Searching } from 'src/app/shared/searching/searching.component';
 export class ListPhotosComponent implements OnInit, OnDestroy {
 
   listPhotos: Photo[] = [];
-  listPhotosFilter: Photo[] = [];
+  filterPhotosValue: string = '';
   loading: boolean = true;
 
   unsubscribe$ = new Subject();
 
   constructor(private servicePhotos: PhotosService, private activatedRoute: ActivatedRoute) { }
 
-  get photos() {
-    return this.listPhotosFilter.length ? this.listPhotosFilter : this.listPhotos;
-  }
-
   ngOnInit(): void {
     this.getListPhotosByUser();
   }
 
-  findPhotosByFilter = (filterValue: Searching): Photo[] => {
+  findPhotosByFilter = (filterValue: Searching): void => {
     const { filter, loading } = filterValue;
 
+    this.filterPhotosValue = filter;
     this.loading = loading;
-
-    return this.listPhotosFilter = this.listPhotos.filter((photo: Photo) =>
-      photo.description.toLowerCase().includes(filter));
   }
 
   ngOnDestroy(): void {
