@@ -2,7 +2,7 @@ import { Photo } from '../../models/photos';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { PhotosService } from 'src/app/sevice/photos.service';
+import { PhotosService } from 'src/app/sevices/photos.service';
 
 @Injectable({
   providedIn: 'root'

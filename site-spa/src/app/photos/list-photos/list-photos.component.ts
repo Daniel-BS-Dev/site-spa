@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil, Subject } from 'rxjs';
 
-import { PhotosService } from './../../sevice/photos.service';
+import { PhotosService } from '../../sevices/photos.service';
 import { Photo } from './../../models/photos';
 import { Searching } from 'src/app/shared/searching/searching.component';
 

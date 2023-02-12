@@ -4,7 +4,7 @@ import { SignComponent } from './view/sign.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignRoutingModule } from './sign-routing.module';
-import { SignService } from '../sevice/sign.service';
+import { SignService } from '../sevices/sign.service';
 
 
 @NgModule({
